@@ -1,36 +1,69 @@
 
-! Switch Configuration (2960)
-hostname Switch2960 
+CONFIGURATION OF SWITCH 1
+hostname SW1
 
 create vlan
 vlan 10
-name HR
-!
+name Telecom
 vlan 20
- name IT
-!
+ name Electrical
+
 
 assign access port
 interface Fa0/1
  switchport mode access
  switchport access vlan 10
-!
+
 interface Fa0/2
  switchport mode access
  switchport access vlan 10
-!
-interface Fa0/3
- switchport mode access
- switchport access vlan 20
-!
+
+Configure trunk link to SW1
+interface FastEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,30
+
 interface Fa0/4
  switchport mode access
- switchport access vlan 20
+ switchport access vlan 30
+
+CONFIGURATION OF SWITCH 2
+enable
+configure terminal
+Create VLANs
+vlan 10
+name VLAN10
+exit
+vlan 30
+name VLAN30
+exit
+
+! Assign access ports
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 10
+exit
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 30
+exit
+
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 30
+exit
+
+Configure trunk link to SW1
+interface FastEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 10,30
+exit
+copy run start
 
 
 
-! PC Configuration Summary
-PC1: IP 10.0.0.3 / 255.255.255.0, Gateway 10.0.0.1
-PC2: IP 10.0.0.4 / 255.255.255.0, Gateway 10.0.0.1
-PC3: IP 20.0.0.2 / 255.255.255.0, Gateway 20.0.0.1
-PC4: IP 20.0.0.3 / 255.255.255.0, Gateway 20.0.0.1
+
+
