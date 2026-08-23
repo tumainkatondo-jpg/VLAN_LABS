@@ -1,26 +1,30 @@
-# VLAN Trunking Network Topology
+# Network Topology Overview
 
-## Overview
-This topology demonstrates VLAN segmentation and trunking between two Cisco 2960 switches using IEEE 802.1Q encapsulation.
+This project demonstrates VLAN segmentation on a Cisco 2960-24TT switch using four PCs.
 
-### Devices
-- **Switch 1 (SW1)**: Cisco 2960-24TT
-- **Switch 2 (SW2)**: Cisco 2960-24TT
-- **PCs**:
-  - VLAN 10: 192.168.10.0/24 → PC0, PC1, PC3
-  - VLAN 30: 192.168.30.0/24 → PC2, PC4, PC5
-
-### Connections
-- SW1 Fa0/3 ↔ SW2 Fa0/3 → Trunk link (802.1Q)
-- SW1 Fa0/1, Fa0/2 → VLAN 10
-- SW1 Fa0/4 → VLAN 30
-- SW2 Fa0/4 → VLAN 10
-- SW2 Fa0/1, Fa0/2 → VLAN 30
+## Topology Summary
+- VLAN 10: 192.168.10.0/24
+  - PC0 → Fa0/1 → 192.168.10.3
+  - PC1 → Fa0/2 → 192.168.10.2
+- VLAN 20: 192.168.20.0/24
+  - PC2 → Fa0/3 → 192.168.20.3
+  - PC3 → Fa0/4 → 192.168.20.2
 
 ## Purpose
-This setup allows VLANs to span across multiple switches using trunking. Devices in the same VLAN can communicate even if connected to different switches.
+This setup isolates traffic between VLANs for better security and management. Devices in VLAN 10 cannot communicate directly with VLAN 20 unless routing is configured (e.g., via a Layer 3 switch or router-on-a-stick).
 
-## Testing
-1. Ping between PCs in the same VLAN (e.g., PC0 ↔ PC1 ↔ PC3 for VLAN 10).
-2. Ping between VLANs should fail unless inter-VLAN routing is configured.
-3. Verify trunk status:
+## How to Use
+1. Load the configuration into the Cisco 2960 switch.
+2. Assign IP addresses to PCs as shown.
+3. Test connectivity:
+   - Ping between PCs in the same VLAN (should succeed).
+   - Ping between VLANs (should fail unless inter-VLAN routing is added).
+
+## Notes
+- Ensure each PC’s default gateway is configured if routing is later introduced.
+- VLANs can be extended to other switches using trunk ports.
+- This topology is ideal for small campus or departmental segmentation.
+
+Author: Tumain  
+Date: August 2026
+
