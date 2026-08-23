@@ -7,11 +7,11 @@ interface Gig0/0
 !router subinterface configuration
 interface Gig0/0.1
   encapsulation dot1Q 10
- ip address 10.0.0.2 255.0.0.0
+ ip address 10.0.0.1 255.0.25255.0
 
 interface Gig0/0.2
  encapsulation dot1Q 20
- ip address 20.0.0.1 255.0.0.0
+ ip address 20.0.0.1 255.255.255.0
 
 
 ! Switch Configuration (2960)
