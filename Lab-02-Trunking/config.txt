@@ -1,0 +1,57 @@
+! Router Configuration
+hostname Router0
+interface Gig0/0
+ no ip address 
+ no shutdown
+
+!router subinterface configuration
+interface Gig0/0.1
+  encapsulation dot1Q 10
+ ip address 10.0.0.2 255.0.0.0
+
+interface Gig0/0.2
+ encapsulation dot1Q 20
+ ip address 20.0.0.1 255.0.0.0
+
+
+! Switch Configuration (2960)
+hostname Switch2960vlan 10
+ 
+vlan 10
+name HR
+!
+vlan 20
+ name IT
+!
+interface Fa0/1
+ switchport mode access
+ switchport access vlan 10
+!
+interface Fa0/2
+ switchport mode access
+ switchport access vlan 10
+!
+interface Fa0/3
+ switchport mode access
+ switchport access vlan 20
+!
+interface Fa0/4
+ switchport mode access
+ switchport access vlan 20
+
+!interface GigabitEthernet0/1
+ switchport mode trunk
+
+vlan 10
+ name HR
+!
+vlan 20
+ name IT
+!
+end
+
+! PC Configuration Summary
+PC1: IP 10.0.0.3 / 255.255.255.0, Gateway 10.0.0.1
+PC2: IP 10.0.0.4 / 255.255.255.0, Gateway 10.0.0.1
+PC3: IP 20.0.0.2 / 255.255.255.0, Gateway 20.0.0.1
+PC4: IP 20.0.0.3 / 255.255.255.0, Gateway 20.0.0.1

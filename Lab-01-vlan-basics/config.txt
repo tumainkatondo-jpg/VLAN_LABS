@@ -1,0 +1,36 @@
+Switch: 2960-24TT
+Purpose: VLAN segmentation for two subnets (192.168.10.0/24 and 192.168.20.0/24)
+
+enable
+configure terminal
+
+create vlans
+vlan 10
+ name VLAN10
+exit
+vlan 20
+ name VLAN20
+exit
+
+ Assign ports to VLANs
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+exit
+
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 10
+exit
+
+interface FastEthernet0/3
+ switchport mode access
+ switchport access vlan 20
+exit
+
+interface FastEthernet0/4
+ switchport mode access
+ switchport access vlan 20
+exit
+
+copy run start.
