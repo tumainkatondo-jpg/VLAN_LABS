@@ -8,7 +8,6 @@ name Telecom
 vlan 20
  name Electrical
 
-
 assign access port
 interface Fa0/1
  switchport mode access
@@ -22,11 +21,12 @@ Configure trunk link to SW1
 interface FastEthernet0/3
  switchport trunk encapsulation dot1q
  switchport mode trunk
- switchport trunk allowed vlan 10,30
+ switchport trunk allowed vlan 10,20
 
 interface Fa0/4
  switchport mode access
- switchport access vlan 30
+ switchport access vlan 20
+
 
 CONFIGURATION OF SWITCH 2
 enable
@@ -35,7 +35,7 @@ Create VLANs
 vlan 10
 name VLAN10
 exit
-vlan 30
+vlan 20
 name VLAN30
 exit
 
@@ -47,19 +47,18 @@ exit
 
 interface FastEthernet0/4
  switchport mode access
- switchport access vlan 30
+ switchport access vlan 20
 exit
 
 interface FastEthernet0/1
  switchport mode access
- switchport access vlan 30
+ switchport access vlan 20
 exit
 
 Configure trunk link to SW1
 interface FastEthernet0/3
- switchport trunk encapsulation dot1q
  switchport mode trunk
- switchport trunk allowed vlan 10,30
+ switchport trunk allowed vlan 10,20
 exit
 copy run start
 
