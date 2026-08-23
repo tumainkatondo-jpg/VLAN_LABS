@@ -25,7 +25,7 @@ The topology demonstrates:
 ## How to Use
 1. Open the `.pkt` file in Cisco Packet Tracer.
 2. Configure each PC with its respective IP and gateway.
-3. Apply the router and switch configurations from `network_config.txt`.
+3. Apply the router and switch configurations from `config.txt`.
 4. Test connectivity using `ping` between PCs across VLANs.
 
 ## Expected Results
