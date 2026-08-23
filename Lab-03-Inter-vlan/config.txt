@@ -7,7 +7,7 @@ interface Gig0/0
 !router subinterface configuration
 interface Gig0/0.1
   encapsulation dot1Q 10
- ip address 10.0.0.1 255.0.25255.0
+ ip address 10.0.0.1 255.255.255.0
 
 interface Gig0/0.2
  encapsulation dot1Q 20
@@ -15,7 +15,7 @@ interface Gig0/0.2
 
 
 ! Switch Configuration (2960)
-hostname Switch2960vlan 10
+hostname SW2
  
 vlan 10
 name HR
